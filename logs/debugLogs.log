@@ -1,0 +1,54 @@
+15:43:16.516 DEBUG AUTOMATION - 
+=============================================
+Request
+=============================================
+(PUT) 	 http://127.0.0.1:3000/animales/5
+Request Headers:
+	Accept: */*
+	Content-Type: application/json
+
+Request Body:
+{
+    "nombre": "Sebastian",
+    "tipo": "salvaje",
+    "edad": 29,
+    "peso": 75.5,
+    "genero": "macho",
+    "amo": {
+        "nombre": "Dovie",
+        "apellido": "McLaughlin",
+        "correo": "Dovie_McLaughlin42@hotmail.com",
+        "edad": 80,
+        "pais": "Argentina"
+    }
+}
+
+=============================================
+Response
+=============================================
+Status Code: 200 	 Response Time: 527ms
+Response Headers:
+	content-type: application/json; charset=utf-8
+	content-length: 207
+	Date: Mon, 30 Mar 2026 18:43:15 GMT
+	Connection: keep-alive
+	Keep-Alive: timeout=72
+
+Response Body:
+{
+    "nombre": "Sebastian",
+    "tipo": "salvaje",
+    "edad": 29,
+    "peso": 75.5,
+    "genero": "macho",
+    "amo": {
+        "nombre": "Dovie",
+        "apellido": "McLaughlin",
+        "correo": "Dovie_McLaughlin42@hotmail.com",
+        "edad": 80,
+        "pais": "Argentina"
+    },
+    "id": "5"
+}
+
+
