@@ -14,7 +14,7 @@ public class AnimalesSteps {
     @And("Se verifica que el id={int}")
     public void verificarId(int idEsperado) {
         final var animal = world.response.as(Animal.class);
-        Assertions.assertEquals(idEsperado, animal.getId());
+        Assertions.assertEquals(idEsperado, animal.id());
     }
 }
 
