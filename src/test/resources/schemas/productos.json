@@ -1,0 +1,71 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Generated schema for Root",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "number"
+    },
+    "nombre": {
+      "type": "string"
+    },
+    "precio": {
+      "type": "number"
+    },
+    "cantidad": {
+      "type": "number"
+    },
+    "peso": {
+      "type": "number"
+    },
+    "perecible": {
+      "type": "boolean"
+    },
+    "volumen": {
+      "type": "number"
+    },
+    "criticas": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "puntaje": {
+            "type": "number"
+          },
+          "comentario": {
+            "type": "string"
+          },
+          "correo": {
+            "type": "string"
+          },
+          "usuario": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "puntaje",
+          "comentario",
+          "correo",
+          "usuario"
+        ]
+      }
+    },
+    "etiquetas": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "id",
+    "nombre",
+    "precio",
+    "cantidad",
+    "peso",
+    "perecible",
+    "volumen",
+    "criticas",
+    "etiquetas"
+  ]
+}

@@ -7,10 +7,12 @@ import io.cucumber.java.en.When;
 import io.restassured.RestAssured;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.http.ContentType;
+import io.restassured.module.jsv.JsonSchemaValidator;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import utilities.RequestFilter;
 
+import java.io.File;
 import java.util.Map;
 
 import static org.hamcrest.Matchers.lessThan;
@@ -27,7 +29,7 @@ public class World {
                 .build();
     }
 
-    @Given("se prepara el request")
+    @Given("Se prepara el request")
     public void prepararElRequest() {
         request = RestAssured.given().spec(buildRequestSpecification());
     }
@@ -65,5 +67,10 @@ public class World {
     @And("Se agrega el siguiente payload:")
     public void agregarRequestBody(String docString) {
         request.body(docString);
+    }
+
+    @And("Se hace el schema validation usando el siguiente schema {string}")
+    public void hacerSchemaValidation(String ruta) {
+        response.then().body(JsonSchemaValidator.matchesJsonSchema(new File(ruta)));
     }
 }

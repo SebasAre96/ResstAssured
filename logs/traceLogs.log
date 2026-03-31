@@ -1,56 +1,40 @@
-15:43:16.473 TRACE AUTOMATION - requestInfo body is NOT null
-15:43:16.515 TRACE AUTOMATION - requestInfo body is NOT null
-15:43:16.516 DEBUG AUTOMATION - 
+22:57:10.328 TRACE AUTOMATION - requestInfo body is null
+22:57:10.415 TRACE AUTOMATION - requestInfo body is NOT null
+22:57:10.416 DEBUG AUTOMATION - 
 =============================================
 Request
 =============================================
-(PUT) 	 http://127.0.0.1:3000/animales/5
-Request Headers:
+(GET) 	 http://127.0.0.1:3000/animales/5
 	Accept: */*
 	Content-Type: application/json
 
-Request Body:
-{
-    "nombre": "Sebastian",
-    "tipo": "salvaje",
-    "edad": 29,
-    "peso": 75.5,
-    "genero": "macho",
-    "amo": {
-        "nombre": "Dovie",
-        "apellido": "McLaughlin",
-        "correo": "Dovie_McLaughlin42@hotmail.com",
-        "edad": 80,
-        "pais": "Argentina"
-    }
-}
 
 =============================================
 Response
 =============================================
-Status Code: 200 	 Response Time: 527ms
+Status Code: 200 	 Response Time: 528ms
 Response Headers:
 	content-type: application/json; charset=utf-8
-	content-length: 207
-	Date: Mon, 30 Mar 2026 18:43:15 GMT
+	content-length: 195
+	Date: Tue, 31 Mar 2026 01:57:09 GMT
 	Connection: keep-alive
 	Keep-Alive: timeout=72
 
 Response Body:
 {
-    "nombre": "Sebastian",
-    "tipo": "salvaje",
-    "edad": 29,
-    "peso": 75.5,
-    "genero": "macho",
+    "id": 5,
+    "nombre": "Fido",
+    "tipo": "cautivo",
+    "edad": 3,
+    "peso": 42.3,
+    "genero": "hermafrodita",
     "amo": {
-        "nombre": "Dovie",
-        "apellido": "McLaughlin",
-        "correo": "Dovie_McLaughlin42@hotmail.com",
-        "edad": 80,
-        "pais": "Argentina"
-    },
-    "id": "5"
+        "nombre": "Dora",
+        "apellido": "Armando",
+        "correo": "Dora-armando@hotmail.com",
+        "edad": 52,
+        "pais": "Paraguay"
+    }
 }
 
 
