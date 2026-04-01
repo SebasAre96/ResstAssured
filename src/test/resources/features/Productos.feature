@@ -3,24 +3,31 @@ Feature: Productos
   Background:
     Given Se prepara el request
 
+  @regression @smoke
   Scenario: Obtener todos los Productos
     Given Se usa la URL de "productos"
     When Se llama al metodo "GET"
     Then Se verifica que el status code sea 200
+    And Se verifica que existan 30 Productos
 
+  @regression @smoke
   Scenario: Obtener un solo Producto
     Given Se usa la URL de "productos/2"
     When Se llama al metodo "GET"
     Then Se verifica que el status code sea 200
     And Se verifica que el response time sea menor a 1000 ms
     And Se hace el schema validation usando el siguiente schema "src/test/resources/schemas/productos.json"
+    And Se verifica que el producto contenga la etiqueta "Moderno"
 
+  @regression @smoke
   Scenario: Eliminar un producto
     Given Se usa la URL de "productos/2"
     When Se llama al metodo "DELETE"
     Then Se verifica que el status code sea 200
     And Se verifica que el response time sea menor a 1000 ms
+    And Se verifica el mensaje "Producto con id 2 se ha eliminado satisfactoriamente"
 
+  @regression
   Scenario: Buscar Productos
     Given Se usa la URL de "productos"
     And Se agregan los siguientes query params:
@@ -29,6 +36,7 @@ Feature: Productos
     Then Se verifica que el status code sea 200
     And Se verifica que el response time sea menor a 1000 ms
 
+  @regression
   Scenario: Ordenar Productos
     Given Se usa la URL de "productos"
     And Se agregan los siguientes query params:
@@ -38,6 +46,7 @@ Feature: Productos
     Then Se verifica que el status code sea 200
     And Se verifica que el response time sea menor a 1000 ms
 
+  @regression
   Scenario: Filtrar Productos
     Given Se usa la URL de "productos"
     And Se agregan los siguientes query params:
@@ -46,6 +55,7 @@ Feature: Productos
     Then Se verifica que el status code sea 200
     And Se verifica que el response time sea menor a 1000 ms
 
+  @regression
   Scenario: Crear un producto
     Given Se usa la URL de "productos"
     And Se agrega el siguiente payload:
@@ -106,6 +116,7 @@ Feature: Productos
     Then Se verifica que el status code sea 201
     And Se verifica que el response time sea menor a 1000 ms
 
+  @regression
   Scenario: Editar un producto
     Given Se usa la URL de "productos/2"
     And Se agrega el siguiente payload:
@@ -132,6 +143,7 @@ Feature: Productos
     Then Se verifica que el status code sea 200
     And Se verifica que el response time sea menor a 1000 ms
 
+  @regression
   Scenario: Actualizar parcialmente un Producto
     Given Se usa la URL de "productos/2"
     And Se agrega el siguiente payload:

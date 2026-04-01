@@ -16,5 +16,11 @@ public class AnimalesSteps {
         final var animal = world.response.as(Animal.class);
         Assertions.assertEquals(idEsperado, animal.id());
     }
+
+    @And("Se verifica que existan {int} Animales")
+    public void verificarTamList(int tamEsperado) {
+        Animal[] animales = world.response.as(Animal[].class);
+        Assertions.assertEquals(tamEsperado, animales.length);
+    }
 }
 

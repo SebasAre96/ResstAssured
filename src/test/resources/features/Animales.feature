@@ -3,12 +3,15 @@ Feature: Animal
   Background:
     Given Se prepara el request
 
+  @regression @smoke
   Scenario: Obtener todos los animales
     Given Se usa la URL de "animales"
     When Se llama al metodo "GET"
     Then Se verifica que el status code sea 200
     And Se verifica que el response time sea menor a 1000 ms
+    And Se verifica que existan 30 Animales
 
+  @regression @smoke
   Scenario: Obtener un solo animal
     Given Se usa la URL de "animales/5"
     When Se llama al metodo "GET"
@@ -17,12 +20,15 @@ Feature: Animal
     And Se hace el schema validation usando el siguiente schema "src/test/resources/schemas/animal.json"
     And Se verifica que el id=5
 
+  @regression @smoke
   Scenario: Eliminar un animal
     Given Se usa la URL de "animales/5"
     When Se llama al metodo "DELETE"
     Then Se verifica que el status code sea 200
     And Se verifica que el response time sea menor a 1000 ms
+    And Se verifica el mensaje "Animal con id 5 se ha eliminado satisfactoriamente"
 
+  @regression
   Scenario: Buscar un Animal
     Given Se usa la URL de "animales"
     And Se agrega el query parameter "nombre"="Leo"
@@ -30,6 +36,7 @@ Feature: Animal
     Then Se verifica que el status code sea 200
     And Se verifica que el response time sea menor a 1000 ms
 
+  @regression
   Scenario: Ordenar animales
     Given Se usa la URL de "animales"
     And Se agregan los siguientes query params:
@@ -39,6 +46,7 @@ Feature: Animal
     Then Se verifica que el status code sea 200
     And Se verifica que el response time sea menor a 1000 ms
 
+  @regression
   Scenario: Filtrar animales
     Given Se usa la URL de "animales"
     And Se agregan los siguientes query params:
@@ -48,6 +56,7 @@ Feature: Animal
     Then Se verifica que el status code sea 200
     And Se verifica que el response time sea menor a 1000 ms
 
+  @regression
   Scenario: Crear un Animal
     Given Se usa la URL de "animales"
     And Se agrega el siguiente payload:
@@ -71,6 +80,7 @@ Feature: Animal
     Then Se verifica que el status code sea 201
     And Se verifica que el response time sea menor a 1000 ms
 
+  @regression
   Scenario: Actualizar un Animal
     Given Se usa la URL de "animales/5"
     And Se agrega el siguiente payload:
@@ -94,6 +104,7 @@ Feature: Animal
     Then Se verifica que el status code sea 200
     And Se verifica que el response time sea menor a 1000 ms
 
+  @regression
   Scenario: Actualizar parcialmente un Animal
     Given Se usa la URL de "animales/5"
     And Se agrega el siguiente payload:

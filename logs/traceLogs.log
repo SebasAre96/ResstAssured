@@ -1,10 +1,10 @@
-22:57:10.328 TRACE AUTOMATION - requestInfo body is null
-22:57:10.415 TRACE AUTOMATION - requestInfo body is NOT null
-22:57:10.416 DEBUG AUTOMATION - 
+22:51:59.639 TRACE AUTOMATION - requestInfo body is null
+22:51:59.715 TRACE AUTOMATION - requestInfo body is NOT null
+22:51:59.716 DEBUG AUTOMATION - 
 =============================================
 Request
 =============================================
-(GET) 	 http://127.0.0.1:3000/animales/5
+(DELETE) 	 http://127.0.0.1:3000/animales/5
 	Accept: */*
 	Content-Type: application/json
 
@@ -12,29 +12,17 @@ Request
 =============================================
 Response
 =============================================
-Status Code: 200 	 Response Time: 528ms
+Status Code: 200 	 Response Time: 499ms
 Response Headers:
 	content-type: application/json; charset=utf-8
-	content-length: 195
-	Date: Tue, 31 Mar 2026 01:57:09 GMT
+	content-length: 64
+	Date: Wed, 01 Apr 2026 01:51:59 GMT
 	Connection: keep-alive
 	Keep-Alive: timeout=72
 
 Response Body:
 {
-    "id": 5,
-    "nombre": "Fido",
-    "tipo": "cautivo",
-    "edad": 3,
-    "peso": 42.3,
-    "genero": "hermafrodita",
-    "amo": {
-        "nombre": "Dora",
-        "apellido": "Armando",
-        "correo": "Dora-armando@hotmail.com",
-        "edad": 52,
-        "pais": "Paraguay"
-    }
+    "mensaje": "Animal con id 5 se ha eliminado satisfactoriamente"
 }
 
 

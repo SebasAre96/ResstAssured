@@ -10,6 +10,8 @@ import io.restassured.http.ContentType;
 import io.restassured.module.jsv.JsonSchemaValidator;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
+import modelos.Mensaje;
+import org.junit.jupiter.api.Assertions;
 import utilities.RequestFilter;
 
 import java.io.File;
@@ -72,5 +74,11 @@ public class World {
     @And("Se hace el schema validation usando el siguiente schema {string}")
     public void hacerSchemaValidation(String ruta) {
         response.then().body(JsonSchemaValidator.matchesJsonSchema(new File(ruta)));
+    }
+
+    @And("Se verifica el mensaje {string}")
+    public void verificarMensaje(String mensajeEsperado) {
+        final var mensaje = response.as(Mensaje.class);
+        Assertions.assertEquals(mensajeEsperado, mensaje.valor());
     }
 }
