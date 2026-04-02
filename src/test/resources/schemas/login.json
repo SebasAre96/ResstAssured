@@ -9,7 +9,7 @@
     "usuario": {
       "type": "string"
     },
-    "email": {
+    "correo": {
       "type": "string"
     },
     "nombre": {
@@ -31,7 +31,7 @@
   "required": [
     "id",
     "usuario",
-    "email",
+    "correo",
     "nombre",
     "apellido",
     "edad",

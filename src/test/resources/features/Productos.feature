@@ -15,7 +15,7 @@ Feature: Productos
     Given Se usa la URL de "productos/2"
     When Se llama al metodo "GET"
     Then Se verifica que el status code sea 200
-    And Se verifica que el response time sea menor a 1000 ms
+    And Se verifica que el response time sea menor a 2000 ms
     And Se hace el schema validation usando el siguiente schema "src/test/resources/schemas/productos.json"
     And Se verifica que el producto contenga la etiqueta "Moderno"
 
@@ -24,7 +24,7 @@ Feature: Productos
     Given Se usa la URL de "productos/2"
     When Se llama al metodo "DELETE"
     Then Se verifica que el status code sea 200
-    And Se verifica que el response time sea menor a 1000 ms
+    And Se verifica que el response time sea menor a 2000 ms
     And Se verifica el mensaje "Producto con id 2 se ha eliminado satisfactoriamente"
 
   @regression
@@ -34,7 +34,7 @@ Feature: Productos
       | nombre | Pizza Congelada |
     When Se llama al metodo "GET"
     Then Se verifica que el status code sea 200
-    And Se verifica que el response time sea menor a 1000 ms
+    And Se verifica que el response time sea menor a 2000 ms
 
   @regression
   Scenario: Ordenar Productos
@@ -44,7 +44,7 @@ Feature: Productos
       | order  | asc    |
     When Se llama al metodo "GET"
     Then Se verifica que el status code sea 200
-    And Se verifica que el response time sea menor a 1000 ms
+    And Se verifica que el response time sea menor a 2000 ms
 
   @regression
   Scenario: Filtrar Productos
@@ -53,7 +53,7 @@ Feature: Productos
       | perecible | true |
     When Se llama al metodo "GET"
     Then Se verifica que el status code sea 200
-    And Se verifica que el response time sea menor a 1000 ms
+    And Se verifica que el response time sea menor a 2000 ms
 
   @regression
   Scenario: Crear un producto
@@ -114,7 +114,7 @@ Feature: Productos
     """
     When Se llama al metodo "POST"
     Then Se verifica que el status code sea 201
-    And Se verifica que el response time sea menor a 1000 ms
+    And Se verifica que el response time sea menor a 2000 ms
 
   @regression
   Scenario: Editar un producto
@@ -141,7 +141,7 @@ Feature: Productos
     """
     When Se llama al metodo "PUT"
     Then Se verifica que el status code sea 200
-    And Se verifica que el response time sea menor a 1000 ms
+    And Se verifica que el response time sea menor a 2000 ms
 
   @regression
   Scenario: Actualizar parcialmente un Producto
@@ -159,5 +159,5 @@ Feature: Productos
     """
     When Se llama al metodo "PATCH"
     Then Se verifica que el status code sea 200
-    And Se verifica que el response time sea menor a 1000 ms
+    And Se verifica que el response time sea menor a 2000 ms
 

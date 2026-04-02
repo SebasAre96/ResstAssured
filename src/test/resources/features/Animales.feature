@@ -8,7 +8,7 @@ Feature: Animal
     Given Se usa la URL de "animales"
     When Se llama al metodo "GET"
     Then Se verifica que el status code sea 200
-    And Se verifica que el response time sea menor a 1000 ms
+    And Se verifica que el response time sea menor a 2000 ms
     And Se verifica que existan 30 Animales
 
   @regression @smoke
@@ -16,7 +16,7 @@ Feature: Animal
     Given Se usa la URL de "animales/5"
     When Se llama al metodo "GET"
     Then Se verifica que el status code sea 200
-    And Se verifica que el response time sea menor a 1000 ms
+    And Se verifica que el response time sea menor a 2000 ms
     And Se hace el schema validation usando el siguiente schema "src/test/resources/schemas/animal.json"
     And Se verifica que el id=5
 
@@ -25,7 +25,7 @@ Feature: Animal
     Given Se usa la URL de "animales/5"
     When Se llama al metodo "DELETE"
     Then Se verifica que el status code sea 200
-    And Se verifica que el response time sea menor a 1000 ms
+    And Se verifica que el response time sea menor a 2000 ms
     And Se verifica el mensaje "Animal con id 5 se ha eliminado satisfactoriamente"
 
   @regression
@@ -34,7 +34,7 @@ Feature: Animal
     And Se agrega el query parameter "nombre"="Leo"
     When Se llama al metodo "GET"
     Then Se verifica que el status code sea 200
-    And Se verifica que el response time sea menor a 1000 ms
+    And Se verifica que el response time sea menor a 2000 ms
 
   @regression
   Scenario: Ordenar animales
@@ -44,7 +44,7 @@ Feature: Animal
       | order  | asc  |
     When Se llama al metodo "GET"
     Then Se verifica que el status code sea 200
-    And Se verifica que el response time sea menor a 1000 ms
+    And Se verifica que el response time sea menor a 2000 ms
 
   @regression
   Scenario: Filtrar animales
@@ -54,7 +54,7 @@ Feature: Animal
       | value    | cautivo |
     When Se llama al metodo "GET"
     Then Se verifica que el status code sea 200
-    And Se verifica que el response time sea menor a 1000 ms
+    And Se verifica que el response time sea menor a 2000 ms
 
   @regression
   Scenario: Crear un Animal
@@ -78,7 +78,7 @@ Feature: Animal
     """
     When Se llama al metodo "POST"
     Then Se verifica que el status code sea 201
-    And Se verifica que el response time sea menor a 1000 ms
+    And Se verifica que el response time sea menor a 2000 ms
 
   @regression
   Scenario: Actualizar un Animal
@@ -102,7 +102,7 @@ Feature: Animal
     """
     When Se llama al metodo "PUT"
     Then Se verifica que el status code sea 200
-    And Se verifica que el response time sea menor a 1000 ms
+    And Se verifica que el response time sea menor a 2000 ms
 
   @regression
   Scenario: Actualizar parcialmente un Animal
@@ -119,4 +119,4 @@ Feature: Animal
     """
     When Se llama al metodo "PATCH"
     Then Se verifica que el status code sea 200
-    And Se verifica que el response time sea menor a 1000 ms
+    And Se verifica que el response time sea menor a 2000 ms

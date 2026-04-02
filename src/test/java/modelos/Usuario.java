@@ -3,7 +3,7 @@ package modelos;
 public record Usuario(
         int id,
         String usuario,
-        String email,
+        String correo,
         String nombre,
         String apellido,
         int edad,

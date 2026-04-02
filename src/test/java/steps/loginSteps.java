@@ -17,8 +17,8 @@ public class loginSteps {
     }
 
     @And("Se verifica que el email del usuario sea {string}")
-    public void verificarEmail(String emailEsperado) {
+    public void verificarEmail(String correoEsperado) {
         final var usuario = world.response.as(Usuario.class);
-        Assertions.assertEquals(emailEsperado, usuario.email());
+        Assertions.assertEquals(correoEsperado, usuario.correo());
     }
 }

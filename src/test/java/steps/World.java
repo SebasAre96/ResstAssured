@@ -26,7 +26,7 @@ public class World {
     public RequestSpecification buildRequestSpecification() {
         return new RequestSpecBuilder()
                 .addFilter(new RequestFilter()) //Filter
-                .setBaseUri("http://127.0.0.1:3000") //base url
+                .setBaseUri("https://api.blassacademy.com") //base url
                 .setContentType(ContentType.JSON) //request content type
                 .build();
     }
