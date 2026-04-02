@@ -10,11 +10,25 @@
 
 ---
 
+## 🎓 Contexto del proyecto
+
+Este proyecto fue desarrollado como parte del curso de **API Automation de BlassAcademy**, donde se implementa un framework de testing automatizado utilizando una API real documentada en Postman.
+
+---
+
 ## 🔗 Documentación de la API
 
 La API utilizada en este proyecto está documentada en:
 
 👉 https://documenter.getpostman.com/view/39136889/2sBXcBohZi
+
+### 🌐 Base URL
+
+```bash
+https://api.blassacademy.com
+```
+
+El framework está configurado para consumir esta API directamente, sin necesidad de levantar un backend local.
 
 ---
 
@@ -95,35 +109,33 @@ src/test/resources
 
 * Creación de productos
 * Consulta de productos
-* Validación de contratos JSON
+* Validación de schema JSON
 
 ---
 
 ## 🥒 Ejemplo de escenario BDD
 
 ```gherkin
-Feature: Autenticación
+Feature: Authorization
 
-  Scenario: Login exitoso
-    Given que el usuario tiene credenciales válidas
-    When realiza una petición de login
-    Then el status code debe ser 200
-    And la respuesta cumple con el schema "login.json"
-```
+  Background:
+    Given Se prepara el request
 
----
-
-## ⚙️ Ejemplo de implementación técnica
-
-```java
-given()
-    .filter(new RequestFilter())
-    .header("Content-Type", "application/json")
-    .body(request)
-.when()
-    .post("/auth/login")
-.then()
-    .statusCode(200);
+  @regression @smoke
+  Scenario: Login
+    Given Se usa la URL de "auth/login"
+    And Se agrega el siguiente payload:
+    """
+      {
+        "username": "standard_user",
+        "password": "secret_blass_academy"
+      }
+    """
+    When Se llama al metodo "POST"
+    Then Se verifica que el status code sea 200
+    And Se verifica que el response time sea menor a 2000 ms
+    And Se hace el schema validation usando el siguiente schema "src/test/resources/schemas/login.json"
+    And Se verifica que el email del usuario sea "standard-user@blass-academy.com"
 ```
 
 ---
@@ -139,7 +151,7 @@ El proyecto integra Allure para visualizar:
 ### Ejecutar reportes:
 
 ```bash
-allure serve allure-results
+mvn allure:serve
 ```
 
 ---
@@ -168,7 +180,7 @@ mvn clean test
 
 * Diseño de framework de automatización desde cero
 * Integración REST Assured + Cucumber
-* Testing de APIs reales
+* Testing de APIs reales basadas en documentación
 * Validación mediante JSON Schema
 * Implementación de reportes con Allure
 * Debugging con logs
@@ -183,4 +195,5 @@ mvn clean test
 
 ## ⭐ Notas finales
 
-Este proyecto simula un entorno real de QA Automation, aplicando prácticas utilizadas en testing de APIs en entornos profesionales.
+Este proyecto fue desarrollado como práctica del curso de **BlassAcademy**, simulando un entorno real de QA Automation mediante el consumo de una API documentada externamente.
+
