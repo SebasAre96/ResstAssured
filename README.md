@@ -1,92 +1,85 @@
-# 🚀 API Automation Framework - REST Assured + Cucumber
+# 🚀 API Automation Framework – REST Assured + BDD
 
-## 🚀 Demo
+## 🧪 Descripción general
 
-✔️ Framework BDD con Cucumber
-✔️ Validación de APIs reales documentadas en Postman
-✔️ Automatización con REST Assured
-✔️ Validación de contratos (JSON Schema)
-✔️ Reportes profesionales con Allure
+Este proyecto implementa un framework de automatización de pruebas de APIs utilizando **REST Assured** y **BDD con Cucumber**, diseñado para validar servicios REST en un entorno similar al de trabajo real.
+
+El enfoque está orientado a garantizar la **calidad, confiabilidad y consistencia de las APIs**, mediante pruebas automatizadas estructuradas, mantenibles y reutilizables.
 
 ---
 
-## 🎓 Contexto del proyecto
+## 💼 ¿Qué demuestra este proyecto?
 
-Este proyecto fue desarrollado como parte del curso de **API Automation de BlassAcademy**, donde se implementa un framework de testing automatizado utilizando una API real documentada en Postman.
+- Diseño de un **framework escalable de testing de APIs**
+- Implementación de **BDD (Behavior Driven Development)** con Cucumber y Gherkin
+- Validación de **contratos de API mediante JSON Schema**
+- Verificación automatizada de:
+  - Status codes  
+  - Tiempos de respuesta  
+  - Estructura de respuestas  
+  - Datos de negocio  
+- Generación de **reportes profesionales con Allure**
+- Uso de **logging para trazabilidad de requests y responses**
+- Aplicación de buenas prácticas de automatización
 
 ---
 
-## 🔗 Documentación de la API
+## 🌐 API bajo prueba
 
-La API utilizada en este proyecto está documentada en:
+El framework consume una API real documentada en Postman:
 
 👉 https://documenter.getpostman.com/view/39136889/2sBXcBohZi
 
-### 🌐 Base URL
-
-```bash
+**Base URL**
+```
 https://api.blassacademy.com
 ```
 
-El framework está configurado para consumir esta API directamente, sin necesidad de levantar un backend local.
-
----
-
-## 🎯 Objetivo
-
-Diseñar e implementar un framework de testing que permita:
-
-* Validar endpoints REST de forma automatizada
-* Implementar pruebas bajo enfoque BDD
-* Verificar contratos mediante JSON Schema
-* Generar reportes claros y profesionales
-* Simular escenarios reales de testing de APIs
+No es necesario levantar un backend local.
 
 ---
 
 ## 🧰 Stack tecnológico
 
-* ☕ Java
-* 🌐 REST Assured
-* 🥒 Cucumber (BDD - Gherkin)
-* 🧪 JUnit
-* 📦 Maven
-* 📊 Allure Reports
-* 📄 JSON Schema Validation
-* 🪵 Log4j2
+- ☕ Java  
+- 🌐 REST Assured  
+- 🥒 Cucumber (BDD – Gherkin)  
+- 🧪 JUnit  
+- 📦 Maven  
+- 📊 Allure Reports  
+- 📄 JSON Schema Validation  
+- 🪵 Log4j2  
+
+---
+
+## 🧠 Enfoque de testing
+
+El framework está diseñado bajo el enfoque **BDD**, permitiendo definir escenarios de prueba en lenguaje legible para negocio.
+
+- Escenarios definidos con **Given – When – Then**
+- Separación entre features y lógica de implementación
+- Reutilización de steps
+- Validación en múltiples niveles:
+  - Código de respuesta  
+  - Performance (tiempo de respuesta)  
+  - Contrato (JSON Schema)  
+  - Datos de negocio  
 
 ---
 
 ## 📁 Estructura del proyecto
 
-```bash
+```
 src/test/java
- ├── modelos/          # POJOs (Animal, Producto, Usuario)
+ ├── models/           # POJOs (modelado de datos)
  ├── steps/            # Step Definitions
- │   ├── AnimalesSteps.java
- │   ├── ProductosSteps.java
- │   ├── loginSteps.java
- │   └── World.java
- │
- ├── runners/
- │   └── RunnerTest.java
- │
- └── utilities/
-     ├── Logs.java
-     └── RequestFilter.java
+ ├── runners/          # Ejecutores de pruebas
+ └── utils/            # Utilidades (logs, filtros, configuración)
 
 src/test/resources
- ├── features/
- │   ├── Animales.feature
- │   ├── Auth.feature
- │   └── Productos.feature
- │
- ├── schemas/
- │   ├── animal.json
- │   ├── login.json
- │   └── productos.json
- │
- └── log4j2.xml
+ ├── features/         # Escenarios en Gherkin
+ ├── schemas/          # JSON Schemas
+ └── log4j2.xml        # Configuración de logs
 ```
 
 ---
@@ -94,96 +87,93 @@ src/test/resources
 ## 🧪 Cobertura de pruebas
 
 ### 🔐 Autenticación
-
-* Login de usuario
-* Validación de token
-* Validación de schema de respuesta
+- Login de usuario  
+- Validación de token  
+- Validación de schema  
 
 ### 🐾 Animales
-
-* Alta de animales
-* Consulta de animales
-* Validación de datos y estructura
+- Creación de entidades  
+- Consulta de datos  
+- Validación de estructura  
 
 ### 🛒 Productos
-
-* Creación de productos
-* Consulta de productos
-* Validación de schema JSON
+- Creación de productos  
+- Consulta de productos  
+- Validación de contrato JSON  
 
 ---
 
 ## 🥒 Ejemplo de escenario BDD
 
 ```gherkin
-Feature: Authorization
+Feature: Autenticación
 
   Background:
     Given Se prepara el request
 
   @regression @smoke
-  Scenario: Login
-    Given Se usa la URL de "auth/login"
-    And Se agrega el siguiente payload:
+  Scenario: Login exitoso
+    Given Se usa la URL "auth/login"
+    And Se envía el siguiente payload:
     """
-      {
-        "username": "standard_user",
-        "password": "secret_blass_academy"
-      }
+    {
+      "username": "standard_user",
+      "password": "secret_blass_academy"
+    }
     """
-    When Se llama al metodo "POST"
-    Then Se verifica que el status code sea 200
-    And Se verifica que el response time sea menor a 2000 ms
-    And Se hace el schema validation usando el siguiente schema "src/test/resources/schemas/login.json"
-    And Se verifica que el email del usuario sea "standard-user@blass-academy.com"
+    When Se ejecuta el método "POST"
+    Then El status code debe ser 200
+    And El tiempo de respuesta debe ser menor a 2000 ms
+    And La respuesta cumple con el schema "schemas/login.json"
+    And El email del usuario debe ser "standard-user@blass-academy.com"
 ```
 
 ---
 
 ## 📊 Reportes con Allure
 
-El proyecto integra Allure para visualizar:
+El proyecto integra **Allure Reports** para visualizar:
 
-* Requests y responses
-* Steps ejecutados
-* Resultados detallados
+- Detalle de ejecución de tests  
+- Requests y responses  
+- Resultados de cada escenario  
 
 ### Ejecutar reportes:
 
-```bash
+```
 mvn allure:serve
 ```
 
 ---
 
-## ▶️ Ejecución de tests
+## ▶️ Ejecución de pruebas
 
-```bash
+```
 mvn clean test
 ```
 
 ---
 
-## 🧱 Buenas prácticas implementadas
+## 🧱 Arquitectura y buenas prácticas
 
-* ✔️ BDD (Behavior Driven Development)
-* ✔️ Separación de responsabilidades
-* ✔️ Uso de POJOs
-* ✔️ Contexto compartido (`World`)
-* ✔️ Validación de contratos (JSON Schema)
-* ✔️ Logging de requests/responses
-* ✔️ Framework escalable
+- ✔️ BDD con Cucumber  
+- ✔️ Separación de responsabilidades  
+- ✔️ Reutilización de configuraciones de request  
+- ✔️ Uso de POJOs para manejo de datos  
+- ✔️ Contexto compartido entre steps  
+- ✔️ Validación de contratos (JSON Schema)  
+- ✔️ Logging de requests y responses  
+- ✔️ Estructura escalable y mantenible  
 
 ---
 
-## 📚 Aprendizajes clave
+## ⚙️ Próximas mejoras
 
-* Diseño de framework de automatización desde cero
-* Integración REST Assured + Cucumber
-* Testing de APIs reales basadas en documentación
-* Validación mediante JSON Schema
-* Implementación de reportes con Allure
-* Debugging con logs
+- Integración con CI/CD (GitHub Actions / Jenkins)  
+- Manejo de múltiples entornos (dev / qa / prod)  
+- Ejecución en paralelo  
+- Contenerización con Docker  
+- Estrategia de manejo de datos de prueba  
 
 ---
 
@@ -193,7 +183,8 @@ mvn clean test
 
 ---
 
-## ⭐ Notas finales
+## ⭐ Notas
 
-Este proyecto fue desarrollado como práctica del curso de **BlassAcademy**, simulando un entorno real de QA Automation mediante el consumo de una API documentada externamente.
+Este proyecto simula un entorno real de QA Automation, aplicando buenas prácticas de testing de APIs, con foco en mantenibilidad, escalabilidad y calidad del software.
+
 
