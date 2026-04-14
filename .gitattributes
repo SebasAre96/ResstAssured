@@ -1,2 +1,4 @@
 *.json linguist-detectable=false
 *.feature linguist-detectable=false
+*.xml linguist-detectable=false
+*.java linguist-language=Javae=false
